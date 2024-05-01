@@ -2,12 +2,15 @@
 
 import { useState, useEffect } from 'react'
 import data from './data.json'
+import { useRouter } from 'next/navigation'
 
 const Home: React.FC = () => {
   const [cardNumber, setCardNumber] = useState('')
   const [result, setResult] = useState<any>(null)
   const [error, setError] = useState<string>('')
   const [history, setHistory] = useState<any[]>([])
+
+  const router = useRouter()
 
   useEffect(() => {
     // Yerel depolamadan geçmişi yükle
@@ -62,10 +65,16 @@ const Home: React.FC = () => {
     }
   }
 
+  const handleNavigateToCreateCard = () => {
+    router.push('/dashboard') // Yönlendirme yolu dosya yapınıza göre ayarlanmalıdır.
+  }
+
   return (
     <div className="flex justify-center min-h-screen py-2">
-      {history.length > 0 && (
-        <div className="absolute left-0 w-1/4 p-4 bg-gray-200 h-screen overflow-y-auto">
+      {history.length > 0 && ( // Eğer geçmişte sorgu varsa, bu bölümü göster
+        <div
+          className={`absolute left-0 w-1/4 p-4 bg-gray-200 h-screen overflow-y-auto`}
+        >
           <h3 className="font-bold text-xl text-center mb-2">Son Sorgular</h3>
           <ul className="flex flex-col items-center">
             {history.map((item, index) => (
