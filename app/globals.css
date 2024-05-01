@@ -8,32 +8,23 @@ body,
   height: 100%;
 }
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
+/* Bu CSS kodunu global CSS dosyanıza ekleyin veya mevcut bir stil bloğuna dahil edin */
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: #ffffff; /* Beyaz arka plan */
+  color: #333333; /* Koyu gri metin rengi */
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+input,
+textarea,
+button {
+  background-color: #fff; /* Beyaz arka plan */
+  color: #333; /* Koyu gri metin rengi */
+  border-color: #ccc; /* Açık gri kenarlık */
+}
+
+/* Odaklandığında ve üzerine gelindiğinde renkleri ayarlayın */
+input:focus,
+textarea:focus,
+button:hover {
+  border-color: #007bff; /* Mavi kenarlık */
 }
