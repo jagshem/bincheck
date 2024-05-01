@@ -110,7 +110,10 @@ const Home: React.FC = () => {
               Kart Türü: <strong>{result.CardType}</strong>
             </p>
             <p>
-              Business Kart: <strong>{result.BusinessCard}</strong>
+              Business Kart:{' '}
+              <strong>
+                {result.BusinessCard ? 'Business' : 'Business Değil'}
+              </strong>
             </p>
             <p>
               Banka Numarası: <strong>{result.MemberNo}</strong>
