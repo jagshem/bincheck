@@ -112,7 +112,9 @@ const Home: React.FC = () => {
             <p>
               Business Kart:{' '}
               <strong>
-                {result.BusinessCard ? 'Business' : 'Business Değil'}
+                {result.BusinessCard === true || result.BusinessCard === 'true'
+                  ? 'Business'
+                  : 'Business Değil'}
               </strong>
             </p>
             <p>
