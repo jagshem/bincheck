@@ -29,6 +29,22 @@ const Sidebar = () => {
             Kart Oluşturucu
           </Link>
         </li>
+        <li>
+          <Link
+            href="/hesapduzenle"
+            className="text-blue-500 hover:text-blue-700 font-semibold block py-2.5 px-4 rounded transition duration-200"
+          >
+            Mail & Proxy Düzenleme
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/hesapolustur"
+            className="text-blue-500 hover:text-blue-700 font-semibold block py-2.5 px-4 rounded transition duration-200"
+          >
+            Proxy & Email (BAKIMDA)
+          </Link>
+        </li>
       </ul>
     </div>
   )

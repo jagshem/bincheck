@@ -28,6 +28,11 @@ const CreateCard = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
       <div className="w-full max-w-4xl p-5 bg-white rounded-lg shadow-lg">
+        <h1 className="p-3 bg-green-100 text-green-700 border border-green-700 rounded mb-4">
+          Uyarı: Bu araç sadece metin içerisindeki kart numaralarını, son
+          kullanma tarihlerini ve CVV numaralarını ayıklar. Kart bilgilerini
+          kullanmadan önce lütfen gerekli izinleri alın.
+        </h1>
         <textarea
           value={text}
           onChange={handleInputChange}

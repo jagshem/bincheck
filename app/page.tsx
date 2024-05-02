@@ -69,13 +69,26 @@ const Home: React.FC = () => {
     router.push('/dashboard') // Yönlendirme yolu dosya yapınıza göre ayarlanmalıdır.
   }
 
+  const handleClearHistory = () => {
+    setHistory([]) // Tüm geçmişi temizle
+    localStorage.removeItem('binHistory') // Yerel depolamadan da temizle
+  }
+
   return (
     <div className="flex justify-center min-h-screen py-2">
-      {history.length > 0 && ( // Eğer geçmişte sorgu varsa, bu bölümü göster
+      {history.length > 0 && (
         <div
           className={`absolute left-0 w-1/4 p-4 bg-gray-200 h-screen overflow-y-auto`}
         >
-          <h3 className="font-bold text-xl text-center mb-2">Son Sorgular</h3>
+          <h3 className="font-bold text-xl text-center mb-2 flex justify-between items-center">
+            <span>Son Sorgular</span>
+            <button
+              onClick={handleClearHistory}
+              className="text-red-500 hover:text-red-700 transition duration-300 ease-in-out"
+            >
+              Tümünü Sil
+            </button>
+          </h3>
           <ul className="flex flex-col items-center">
             {history.map((item, index) => (
               <li
@@ -90,6 +103,11 @@ const Home: React.FC = () => {
         </div>
       )}
       <div className="flex flex-col items-center justify-center w-full max-w-4xl">
+        <h1 className="p-3 bg-green-100 text-green-700 border border-green-700 rounded mb-4">
+          Uyarı: Bu araç sadece kredi kartı numarasının ilk 6 hanesine göre
+          banka ve kart türü bilgilerini verir. Kart bilgilerini kullanmadan
+          önce lütfen gerekli izinleri alın.
+        </h1>
         <div className="flex w-full">
           <input
             type="text"
