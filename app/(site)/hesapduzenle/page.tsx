@@ -56,7 +56,9 @@ const Home = () => {
 
   const handleEmailPasswordFormat = () => {
     setError('')
-    if (proxies.split('\n').length === 0) {
+    const proxyArray = proxies.split('\n').map((proxy) => proxy.trim())
+
+    if (proxyArray.length === 0) {
       setError('Proxy listesi boş olamaz.')
       return
     }
@@ -72,7 +74,7 @@ const Home = () => {
           return null
         }
         const [email, password] = parts
-        return `${email.trim()}:${password.trim()}`
+        return { email: email.trim(), password: password.trim() }
       })
       .filter(Boolean)
 
@@ -82,7 +84,14 @@ const Home = () => {
     }
 
     const formattedCombo = comboList
-      .map((combo, index) => `${combo}:${proxies.split('\n')[index].trim()}`)
+      .map((combo, index) => {
+        if (combo) {
+          return `${combo.email}:${combo.password}:${
+            proxyArray[index % proxyArray.length]
+          }`
+        }
+        return ''
+      })
       .join('\n')
     setFormattedData(formattedCombo)
   }
